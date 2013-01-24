@@ -6,9 +6,20 @@
 	<title>local stage test</title>
 </head>
 <body>
+	<script type="text/javascript">
 	if(!typeof sessionStrage == 'undifined'){
 	window.alert("使えません");
 }
-	<div></div>
+</script>
+	<div id="list"></div>
+	<script type="text/javascript">
+var storage = sessionStorage;
+storage.setItem('foo','bar');
+for (var i = 0; i < sessionStorage.length; i++) {
+	var _key = storage.key(i);
+	document.getElementById("list").innerHTML += _key +
+	":" + storage.getItem(_key) + "<br>";
+}
+	</script>
 </body>
 </html>
