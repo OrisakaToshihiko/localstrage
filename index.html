@@ -19,7 +19,7 @@ key:<input type="text" name="key" id="key" size="10"> value:
 
 	<div id="list"></div>
 	<script type="text/javascript">
-var storage = window.sessionStorage;
+var storage = window.localStorage;
 function save(){
 	var keyVal = document.getElementById("key").value;
 	var valueVal = document.getElementById("value").value;
@@ -35,8 +35,9 @@ function list() {
 	var list ="";
 	for (var i =0; i<storage.length ; i++) {
 		var _key = storage.key(i);
-		
-		list += _key + ":" + storage.getItem(_key) + "<a href=¥"#¥" onClick=¥"remove("+ i +"); return false;¥">削除</a><br>"; 
+		list += _key + ":" + storage.getItem(_key) + "    <a href=\"#\"onClick=\"remove(" + i + ");return false;\">削除</a><br>"; 
+		//list += _key + " : " + storage.getItem(_key) + "   <a href=\"#\" onClick=\"remove(" + i + "); return false;\">削除</a><br>";
+
 	}
 	document.getElementById("list").innerHTML = list;
 }
