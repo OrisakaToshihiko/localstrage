@@ -15,6 +15,7 @@
 key:<input type="text" name="key" id="key" size="10"> value:
 <input type="text" name="value" id="value" size="10">
 <input type="button" value="save" onClick="save()">
+<input type="button" value="clear" onClick="reset()">
 
 	<div id="list"></div>
 	<script type="text/javascript">
@@ -32,11 +33,25 @@ function save(){
 
 function list() {
 	var list ="";
-	for (var i = storage.length ; i++) {
+	for (var i =0; i<storage.length ; i++) {
 		var _key = storage.key(i);
-		list += _key + ":" + storage.getItem(_key) + "<br>" 
+		
+		list += _key + ":" + storage.getItem(_key) + "<a href=¥"#¥" onClick=¥"remove("+ i +"); return false;¥">削除</a><br>"; 
 	}
 	document.getElementById("list").innerHTML = list;
 }
+
+function remove (n) {
+	var _key = storage.key(n);
+	storage.removeItem(_key);
+	list();
+}
+
+function reset() {
+	storage.clear();
+	list();
+}
+
+</script>
 	</body>
 </html>
