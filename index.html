@@ -39,23 +39,22 @@ function list() {
 	for (var i =0; i<storage.length ; i++) {
 		var _key = storage.key(i);
 		list += _key + ":" + storage.getItem(_key) + "    <a href=\"#\"onClick=\"removeSt(" + i + ")\">削除</a><br>"; 
-		//list += _key + " : " + storage.getItem(_key) + "   <a href=\"#\" onClick=\"remove(" + i + "); return false;\">削除</a><br>";
-
 	}
 	$('#length').html(length);
-	document.getElementById("list").innerHTML = list;
+	//ocument.getElementById("list").innerHTML = list;
+	&(''#list).html(kist);
 }
 
 function removeSt(n) {
 	var _key = storage.key(n);
 	storage.removeItem(_key);
-	window.alert("マイロ");
+	//window.alert("マイロ");
 	list();
 }
 
 function reset() {
 	storage.clear();
-	window.alert("リセット");
+	//window.alert("リセット");
 	list();
 }
 
