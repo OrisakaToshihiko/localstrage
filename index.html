@@ -5,7 +5,7 @@
 	<script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
 	<title>local stage test</title>
 </head>
-<body>
+<body onLoad="list()">
 	<script type="text/javascript">
 	if(!typeof sessionStrage == 'undifined'){
 	window.alert("使えません");
@@ -16,8 +16,9 @@ key:<input type="text" name="key" id="key" size="10"> value:
 <input type="text" name="value" id="value" size="10">
 <input type="button" value="save" onClick="save()">
 <input type="button" value="clear" onClick="reset()">
-
+	<div id="length"></div>
 	<div id="list"></div>
+
 	<script type="text/javascript">
 var storage = window.localStorage;
 function save(){
@@ -33,23 +34,28 @@ function save(){
 
 function list() {
 	var list ="";
+	var length =storage.length;
+	
 	for (var i =0; i<storage.length ; i++) {
 		var _key = storage.key(i);
-		list += _key + ":" + storage.getItem(_key) + "    <a href=\"#\"onClick=\"remove(" + i + ");return false;\">削除</a><br>"; 
+		list += _key + ":" + storage.getItem(_key) + "    <a href=\"#\"onClick=\"removeSt(" + i + ")\">削除</a><br>"; 
 		//list += _key + " : " + storage.getItem(_key) + "   <a href=\"#\" onClick=\"remove(" + i + "); return false;\">削除</a><br>";
 
 	}
+	$('#length').html(length);
 	document.getElementById("list").innerHTML = list;
 }
 
-function remove (n) {
+function removeSt(n) {
 	var _key = storage.key(n);
 	storage.removeItem(_key);
+	window.alert("マイロ");
 	list();
 }
 
 function reset() {
 	storage.clear();
+	window.alert("リセット");
 	list();
 }
 
